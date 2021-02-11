@@ -39,8 +39,8 @@ class HomeController extends Controller
         if(request()->hasFile('file')){
             $image_file = request()->file('file');
             $image = Image::make($image_file);
-            Response::make($image->utf8_encode('jpg'));
-            $user->image = $image;
+            Response::make($image->encode('jpg'));
+            $user->image = utf8_encode($image);
         }
         $user->save();
         return redirect(route('account.show',$user));
