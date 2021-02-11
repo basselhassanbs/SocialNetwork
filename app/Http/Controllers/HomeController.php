@@ -39,7 +39,7 @@ class HomeController extends Controller
         if(request()->hasFile('file')){
             $image_file = request()->file('file');
             $image = Image::make($image_file);
-            Response::make($image->encode('jpg'));
+            Response::make($image->utf8_encode('jpg'));
             $user->image = $image;
         }
         $user->save();
