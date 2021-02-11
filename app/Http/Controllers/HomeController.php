@@ -40,7 +40,7 @@ class HomeController extends Controller
             $image_file = request()->file('file');
             $image = Image::make($image_file);
             Response::make($image->encode('jpg'));
-            $user->image = utf8_encode($image);
+            $user->image = $image;
         }
         $user->save();
         return redirect(route('account.show',$user));
